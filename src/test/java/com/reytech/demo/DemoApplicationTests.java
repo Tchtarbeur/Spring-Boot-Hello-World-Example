@@ -11,6 +11,7 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestMethodOrder;
 
+
 @DisplayName("A special test case")
 //@Disabled("All test in this class will be skipped")
 @TestMethodOrder(OrderAnnotation.class) // il faut minimum la version 5.4 pour gérer l'ordre
