@@ -61,7 +61,7 @@ pipeline {
             environment {
                 SCANNER_HOME = tool 'sonarqube'
                 ORGANIZATION = "EQL"
-                PROJECT_NAME = "SpringBootProject_2"
+                PROJECT_NAME = "SpringBootProject_1"
             }
             steps {
                 withSonarQubeEnv('sonarqube') {
