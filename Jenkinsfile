@@ -101,6 +101,31 @@ pipeline {
              }
           }
         }
+	stage('Continuous deployment') {
+          steps {
+             script {
+              sshPublisher(
+               continueOnError: false, failOnError: true,
+               publishers: [
+                sshPublisherDesc(
+                 configName: "docker-host",
+                 verbose: true,
+                 transfers: [
+                  sshTransfer(
+                   sourceFiles: "",
+                   removePrefix: "",
+                   remoteDirectory: "",
+                   execCommand: """
+                    sudo docker stop \$(docker ps -a -q);
+                    sudo docker rm \$(docker ps -a -q);
+                    sudo docker rmi -f \$(docker images -a -q);
+                    sudo docker run -d -p 8080:8080 babsmbaye/springbootapp1:1.0; """
+                  )
+                 ])
+               ])
+             }
+          }
+        }
 
     }
 }
